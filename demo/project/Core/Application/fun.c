@@ -78,7 +78,6 @@ void start_Init()
 	timer_init(&timer_2, timer2_callback, 1000, 2000, NULL); 
 	timer_start(&timer_2);
 
-	key1.key_id = 1;
 	key1.GPIOx = GPIOA;
 	key1.Pin = GPIO_PIN_4;
 	key1.mode = 0x08|0x01|0x02|0x04;
@@ -87,8 +86,6 @@ void start_Init()
 	key_create(&key1);
 
 
-	
-	key2.key_id = 1;
 	key2.GPIOx = GPIOA;
 	key2.Pin = GPIO_PIN_5;
 	key2.mode = 0x08|0x01|0x02|0x04;
