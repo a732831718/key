@@ -1,9 +1,13 @@
 ### 使用说明
 本框架基于于stm32 hal库 （可通过修改移植其他库函数）
+
 1.将 key_meter(); 以1ms调用一次
+
 2.将key_canf();   放入主函数循环调用  
+
 3.创建句柄 如  
-key_TypDef key1;
+`key_TypDef key1;`
+
 4.创建处理函数 模板：
 
 ```
@@ -41,3 +45,6 @@ key_create(&key1);
 ```
 5.创建按键事件
 key_create(key1);
+
+### 关注公众号
+
