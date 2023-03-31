@@ -60,7 +60,7 @@ void key_Init(key_TypDef *key_dat)
 	
 	key_info[key_num] = key_dat;
 	key_num++;
-}
+} 
 
 /**
  * @brief ´´½¨°´Å¥
