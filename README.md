@@ -7,6 +7,8 @@
  * 3.创建句柄 如  
  * key_TypDef key1;
  * 4.创建处理函数 模板：
+
+```
 void key_1(unsigned char cmd)
 {
 	if(cmd == 1)
@@ -26,9 +28,11 @@ void key_1(unsigned char cmd)
 		//双击
 	}
 }
+```
+
  
  5.创建按钮
-    key_create(&key1,GPIOA,GPIO_PIN_4,MODE_SHORT_PRESS|MODE_LONG_PRESS|MODE_CONTINUONS|MODE_DOUBLE_CLICK,KEY_LOW_LEVEL,&key_1);
+   ` key_create(&key1,GPIOA,GPIO_PIN_4,MODE_SHORT_PRESS|MODE_LONG_PRESS|MODE_CONTINUONS|MODE_DOUBLE_CLICK,KEY_LOW_LEVEL,&key_1);`
 ***/
 
 ### 关注公众号
