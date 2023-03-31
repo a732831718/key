@@ -3,8 +3,8 @@
   * @file    key.h
   * @author  代码瑶 
   * @brief   一套可实现短按长按持续双击的按键驱动
-  * @version V1.0
-  * @date 	 2023年3月30日
+  * @version V1.1
+  * @date 	 2023年3月31日
   ******************************************************************************/
 #ifndef _KEY_H_
 #define _KEY_H_
@@ -89,16 +89,9 @@ void key_1(unsigned char cmd)
 		//双击
 	}
 }
- * 4.赋值 
-	key1.GPIOx = GPIOA; //选择IO端口
-	key1.Pin = GPIO_PIN_4;//选择引脚
-	key1.mode = 0x08|0x01|0x02|0x04;//选择模式 可以调用MODE_SHORT_PRESS MODE_LONG_PRESS MODE_CONTINUONS MODE_DOUBLE_CLICK  
-	key1.level = KEY_LOW_LEVEL; //选择按下是高电平还是低电平
-	key1.fun = key_1;//将创建的函数赋值
-	key_create(&key1);
- *
- *5.创建按键事件
- *key_create(key1);
+ 
+ 5.创建按钮
+ 	key_create(&key1,GPIOA,GPIO_PIN_4,MODE_SHORT_PRESS|MODE_LONG_PRESS|MODE_CONTINUONS|MODE_DOUBLE_CLICK,KEY_LOW_LEVEL,&key_1);
 */
 
 

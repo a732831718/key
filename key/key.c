@@ -29,8 +29,8 @@
   * @file    key.c
   * @author  代码瑶 
   * @brief   实现短按长按持续双击的按键驱动
-  * @version V1.0
-  *	@date 	 2023年3月30日
+  * @version V1.1
+  *	@date 	 2023年3月31日
   ******************************************************************************/
 #include "key.h"
 #include "stdio.h"
@@ -212,7 +212,6 @@ unsigned char key_drive(key_TypDef *key_dat)
 			
 			if((key_dat->mode & 0x08) == 0x08)//如果模式开启双击 间隔开始
 			{
-				//printf("%u\n",key_dat->flag.key_count);
 					key_dat->flag.interval_timer = 0;//清0
 					key_dat->flag.interval_timer_flag = 1;//开始间隔计时
 					
@@ -237,16 +236,6 @@ unsigned char key_drive(key_TypDef *key_dat)
 							(key_dat ->fun)(key_dat->flag.key_state);//回调函数
 							key_dat->flag.timer = 0;
 					}
-//					if(key_dat->flag.key_state == 2)//状态2长按时候触发事件
-//					{	
-//							(key_dat ->fun)(key_dat->flag.key_state);//回调函数
-//							key_dat->flag.timer = 0;
-//					}
-//					if(key_dat->flag.key_state == 4)//双击
-//					{
-//						(key_dat ->fun)(key_dat->flag.key_state);//回调函数
-//					
-//					}
 					key_dat->flag.key_state = 0;//状态清0
 					key_dat->flag.interval_timer = 0;//清0
 					key_dat->flag.interval_timer_flag = 0;//标志位清0
@@ -260,16 +249,6 @@ unsigned char key_drive(key_TypDef *key_dat)
 					key_dat->flag.timer = 0;
 					(key_dat ->fun)(key_dat->flag.key_state);
 				}
-				
-//				if(key_dat->flag.key_state == 2)//状态2长按时候触发事件
-//				{	
-//						key_dat->flag.timer = 0;
-//						(key_dat ->fun)(key_dat->flag.key_state);//回调函数
-//				}	
-//				if(key_dat->flag.key_state == 4)//双击
-//				{						
-//						(key_dat ->fun)(key_dat->flag.key_state);//回调函数
-//				}
 				key_dat->flag.key_state = 0;//状态清0
 			}
 			
