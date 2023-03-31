@@ -3,19 +3,19 @@
         {
             "name": "project",
             "includePath": [
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Core\\Inc",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Drivers\\STM32F1xx_HAL_Driver\\Inc",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Drivers\\CMSIS\\Include",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Core",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Core\\MOD",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Core\\MOD\\MultiTimer",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Core\\BSP",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Core\\Application",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\MDK-ARM",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Core\\Src",
-                "f:\\32\\hal_experiment\\CubeMX\\key\\project\\Drivers\\STM32F1xx_HAL_Driver\\Src"
+                "f:\\git\\key\\demo\\project\\Core\\Inc",
+                "f:\\git\\key\\demo\\project\\Drivers\\STM32F1xx_HAL_Driver\\Inc",
+                "f:\\git\\key\\demo\\project\\Drivers\\STM32F1xx_HAL_Driver\\Inc\\Legacy",
+                "f:\\git\\key\\demo\\project\\Drivers\\CMSIS\\Device\\ST\\STM32F1xx\\Include",
+                "f:\\git\\key\\demo\\project\\Drivers\\CMSIS\\Include",
+                "f:\\git\\key\\demo\\project\\Core",
+                "f:\\git\\key\\demo\\project\\Core\\MOD",
+                "f:\\git\\key\\demo\\project\\Core\\MOD\\MultiTimer",
+                "f:\\git\\key\\demo\\project\\Core\\BSP",
+                "f:\\git\\key\\demo\\project\\Core\\Application",
+                "f:\\git\\key\\demo\\project\\MDK-ARM",
+                "f:\\git\\key\\demo\\project\\Core\\Src",
+                "f:\\git\\key\\demo\\project\\Drivers\\STM32F1xx_HAL_Driver\\Src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

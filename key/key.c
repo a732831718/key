@@ -47,11 +47,9 @@ static unsigned int key_num = 0;//按键数量
 
 
 /**
- * @brief 初始化创建
- * 
- * @return unsigned char 
- * 
- */  
+ * @brief 按键初始化
+ * @param key_dat 
+ */
 void key_Init(key_TypDef *key_dat)
 {
 	GPIO_InitTypeDef GPIO_InitStruct;//引脚初始化
@@ -65,10 +63,14 @@ void key_Init(key_TypDef *key_dat)
 }
 
 /**
- * @brief 按键创建
- * 
- * 
- */  
+ * @brief 创建按钮
+ * @param key_dat 按键的句柄
+ * @param GPIOx   gpio端口
+ * @param Pin 		引脚 
+ * @param mode 	模式 MODE_SHORT_PRESS MODE_LONG_PRESS  MODE_CONTINUONS  MODE_DOUBLE_CLICK
+ * @param level  电平 KEY_HIGH_LEVEL  KEY_LOW_LEVEL
+ * @param fun  按键触发调用的函数
+ */
 void key_create(key_TypDef *key_dat,GPIO_TypeDef *GPIOx,unsigned char Pin,unsigned char mode,GPIO_PinState level,void (*fun)(unsigned char cmd))
 {
 	key_dat ->GPIOx = GPIOx;
