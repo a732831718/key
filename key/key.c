@@ -47,12 +47,12 @@ static unsigned int key_num = 0;//按键数量
 
 
 /**
- * @brief 按键创建
+ * @brief 初始化创建
  * 
  * @return unsigned char 
  * 
  */  
-void key_create(key_TypDef *key_dat)
+void key_Init(key_TypDef *key_dat)
 {
 	GPIO_InitTypeDef GPIO_InitStruct;//引脚初始化
 	GPIO_InitStruct.Pin = key_dat -> Pin;
@@ -64,6 +64,20 @@ void key_create(key_TypDef *key_dat)
 	key_num++;
 }
 
+/**
+ * @brief 按键创建
+ * 
+ * 
+ */  
+void key_create(key_TypDef *key_dat,GPIO_TypeDef *GPIOx,unsigned char Pin,unsigned char mode,GPIO_PinState level,void (*fun)(unsigned char cmd))
+{
+	key_dat ->GPIOx = GPIOx;
+	key_dat ->Pin = Pin;
+	key_dat ->mode = mode;
+	key_dat ->level = level;
+	key_dat ->fun = fun;
+	key_Init(key_dat);
+}
 
 /**
  * @brief 计数
@@ -112,7 +126,7 @@ unsigned char key_drive(key_TypDef *key_dat)
 			if((key_dat->mode&0x08) == 0x08)//有开启多按
 			{
 				key_dat->flag.interval_timer_flag = 0;//计时停止
-			
+				
 				if(key_dat->flag.interval_timer <=  KEY_INTERVAL)
 				{
 					key_dat->flag.key_count++;
@@ -164,6 +178,10 @@ unsigned char key_drive(key_TypDef *key_dat)
 			{	
 		
 					if(key_dat->flag.timer >= KEY_SHAKE_TIME && key_dat->flag.timer < KEY_LONG_PRESS)//消抖完成
+					{
+						key_dat->flag.key_state = 1;//短按	
+					}
+					if(key_dat->flag.timer >= KEY_SHAKE_TIME && (key_dat->mode & 0x02) != 0x02 && (key_dat->mode & 0x04) != 0x04)
 					{
 						key_dat->flag.key_state = 1;//短按	
 					}
@@ -219,6 +237,16 @@ unsigned char key_drive(key_TypDef *key_dat)
 							(key_dat ->fun)(key_dat->flag.key_state);//回调函数
 							key_dat->flag.timer = 0;
 					}
+//					if(key_dat->flag.key_state == 2)//状态2长按时候触发事件
+//					{	
+//							(key_dat ->fun)(key_dat->flag.key_state);//回调函数
+//							key_dat->flag.timer = 0;
+//					}
+//					if(key_dat->flag.key_state == 4)//双击
+//					{
+//						(key_dat ->fun)(key_dat->flag.key_state);//回调函数
+//					
+//					}
 					key_dat->flag.key_state = 0;//状态清0
 					key_dat->flag.interval_timer = 0;//清0
 					key_dat->flag.interval_timer_flag = 0;//标志位清0
@@ -232,6 +260,16 @@ unsigned char key_drive(key_TypDef *key_dat)
 					key_dat->flag.timer = 0;
 					(key_dat ->fun)(key_dat->flag.key_state);
 				}
+				
+//				if(key_dat->flag.key_state == 2)//状态2长按时候触发事件
+//				{	
+//						key_dat->flag.timer = 0;
+//						(key_dat ->fun)(key_dat->flag.key_state);//回调函数
+//				}	
+//				if(key_dat->flag.key_state == 4)//双击
+//				{						
+//						(key_dat ->fun)(key_dat->flag.key_state);//回调函数
+//				}
 				key_dat->flag.key_state = 0;//状态清0
 			}
 			
@@ -243,7 +281,12 @@ unsigned char key_drive(key_TypDef *key_dat)
 }
 	
 
-	
+
+
+
+
+
+
 /**
  * @brief 按键扫描
  */

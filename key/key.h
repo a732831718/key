@@ -29,8 +29,8 @@
 */
 #define MODE_SHORT_PRESS  0x01  //短按
 #define MODE_LONG_PRESS   0x02	//长按
-#define MODE_CONTINUONS   0x03	//长按持续触发
-#define MODE_DOUBLE_CLICK 0x04	//双击
+#define MODE_CONTINUONS   0x04	//长按持续触发
+#define MODE_DOUBLE_CLICK 0x08	//双击
 
 /**
  * @brief 按钮配置结构体
@@ -59,9 +59,9 @@ typedef struct
 
 
 void key_meter(void);//计数
-void key_create(key_TypDef *key_dat);//创建按键
+void key_Init(key_TypDef *key_dat);//创建按键
 void key_canf(void);
-
+void key_create(key_TypDef *key_dat,GPIO_TypeDef *GPIOx,unsigned char Pin,unsigned char mode,GPIO_PinState level,void (*fun)(unsigned char cmd));
 /***
  * ***********使用说明***************
  * 本框架基于于stm32 hal库 （可通过修改移植其他库函数）

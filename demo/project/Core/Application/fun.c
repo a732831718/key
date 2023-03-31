@@ -78,20 +78,20 @@ void start_Init()
 	timer_init(&timer_2, timer2_callback, 1000, 2000, NULL); 
 	timer_start(&timer_2);
 
-	key1.GPIOx = GPIOA;
-	key1.Pin = GPIO_PIN_4;
-	key1.mode = 0x08|0x01|0x02|0x04;
-	key1.level = KEY_LOW_LEVEL;
-	key1.fun = key_1;
-	key_create(&key1);
+//	key1.GPIOx = GPIOA;
+//	key1.Pin = GPIO_PIN_4;
+//	key1.mode = 0x08|0x01|0x02|0x04;
+//	key1.level = KEY_LOW_LEVEL;
+//	key1.fun = key_1;
+	key_create(&key1,GPIOA,GPIO_PIN_4,MODE_SHORT_PRESS|MODE_LONG_PRESS|MODE_CONTINUONS|MODE_DOUBLE_CLICK,KEY_LOW_LEVEL,&key_1);
 
 
-	key2.GPIOx = GPIOA;
-	key2.Pin = GPIO_PIN_5;
-	key2.mode = 0x08|0x01|0x02|0x04;
-	key2.level = KEY_LOW_LEVEL;
-	key2.fun = key_2;
-	key_create(&key2);
+//	key2.GPIOx = GPIOA;
+//	key2.Pin = GPIO_PIN_5;
+//	key2.mode = 0x08|0x01|0x02|0x04;
+//	key2.level = KEY_LOW_LEVEL;
+//	key2.fun = key_2;
+	key_create(&key2,GPIOA,GPIO_PIN_5,0x08|0x01|0x02|0x04,KEY_LOW_LEVEL,&key_2);
 }
 
 
